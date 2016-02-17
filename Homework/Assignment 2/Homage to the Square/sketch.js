@@ -11,17 +11,17 @@ function setup() {
 
 function draw() {
  //beige frame
-  background (255, 255, 190);
+  background (224, 204, 167);
     //aqua square
-    fill (0, 210, 190) 
+    fill (7, 112, 112) 
     rect (t, t, y2, y2); 
       //yellow square
-      fill (255,255, 0);
+      fill (253,232, 19);
       rect (gap, t+x2, wh-gap*2, y2-ygap);
         //mustard square
-        fill (235, 204,0);
+        fill (224, 184,38);
         rect (gap*2, t+x2*2, wh-gap*3-gap, y2-ygap*2);
           //brown square
-          fill (139, 69, 19);
+          fill (122, 75, 0);
           rect (gap*3, t+x2*3, wh-gap*5-gap, y2-ygap*3);
 }
