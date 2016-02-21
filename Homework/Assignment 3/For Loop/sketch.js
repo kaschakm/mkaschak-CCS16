@@ -6,7 +6,7 @@ function setup() {
 }
 
 function draw() {
-  background (150);
+  background (50,100,200);
   scale(scalar);
   
   for(var i = 1; i <= triangles; i++){
