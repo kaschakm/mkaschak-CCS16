@@ -2,6 +2,8 @@ var x = 105;
 var y = 60;
 var w = 255;
 
+var darkgray = fill(53,61,70);
+
 function setup() {
 createCanvas (455,600);
 noStroke();
@@ -15,7 +17,7 @@ fill(110,115,120);
 rect(x,y,w,480);
 
 //top dark gray rectangle
-fill(53,61,70);
+darkgray;
 rect(x,y,w,155);
 
 //light gray rectangle
