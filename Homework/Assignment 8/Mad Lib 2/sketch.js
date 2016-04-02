@@ -15,10 +15,7 @@ function setup() {
 
   function mousePressed() {
 
-  var params = {
-  };
-  
- counts = RiTa.concordance(lines.join(" ")); 
+counts = RiTa.concordance(lines.join(" ")); 
   
   //replace all nouns with random nouns
   push();
@@ -27,21 +24,21 @@ function setup() {
       var tags = RiTa.getPosTags(k);
       if (tags[0] == 'nn') {
         words.push(RiTa.replaceAll = lexicon.randomWord('nn'));
-        pop();
         noLoop();
+          pop();
       }
     }
   }
   
   //replace all adjectives with random adjectives
-          push();
+  push();
   for (var j in counts) {
     if (counts.hasOwnProperty(j)) {
       var tag = RiTa.getPosTags(j);
       if (tag[0] == 'jj') {
         words.push(RiTa.replaceAll = lexicon.randomWord('jj'));
-        pop();
         noLoop();
+          pop();
       }
     }
   }
