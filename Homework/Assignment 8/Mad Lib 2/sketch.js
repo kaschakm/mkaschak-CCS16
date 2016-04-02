@@ -28,6 +28,7 @@ function setup() {
       if (tags[0] == 'nn') {
         words.push(RiTa.replaceAll = lexicon.randomWord('nn'));
         pop();
+        noLoop();
       }
     }
   }
@@ -40,6 +41,7 @@ function setup() {
       if (tag[0] == 'jj') {
         words.push(RiTa.replaceAll = lexicon.randomWord('jj'));
         pop();
+        noLoop();
       }
     }
   }
