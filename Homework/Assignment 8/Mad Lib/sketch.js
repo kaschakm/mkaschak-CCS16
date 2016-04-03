@@ -1,35 +1,33 @@
-var lines = []; 
+var gettysburg = []; 
 var lexicon;
-var rs;
-var amount;
-var partsOfSpeech = [];
 var words = [];
-//var shrttxt;
-//endsWith(suffix); RiString
-var counts;
-var noun;
+partsOfSpeech = RiTa.getPosTags;
 
 function preload () {
-  lines = loadStrings ('assets/Gettysburg Address.txt');
-  
+  gettysburg = loadStrings ('assets/Gettysburg Address.txt');
 }
 
 function setup() {
-  createCanvas (400, 400);
-    lexicon = new RiLexicon();
-
-  textSize (16);
-  text(lines, 0,0,width,height);
-
-counts = RiTa.concordance(lines.join(" ")); 
-  //shrttx = loadStrings('assets/Gettysburg Address.txt');
-  rs = new RiString();
-  rs.analyze();
- words = RiTa.tokenize(lines);
- partsOfSpeech = RiTa.getPosTags(lines);
+  createCanvas(400, 400);
+  lexicon = new RiLexicon();
+  words = RiTa.tokenize(gettysburg)
 }
 
-function mousePressed() {
-   noun = RiTa.replaceAll = ('nn',lexicon.randomWord('nn'));
-}
+  function mousePressed() {
 
+//counts = RiTa.concordance(gettysburg.join(" ")); 
+  
+  //replace all nouns with random nouns
+      push();
+      for(var i=0; i < partsOfSpeech == 'nn'; i++){
+       words.push(RiTa.replaceWord(('nn'),lexicon.randomWord('nn')));
+      pop();
+      }
+    }
+
+function draw() {
+  background(50);
+  textSize(20);
+  fill(255);
+  text(words.join, 10, 10, width-20, height-20);
+}

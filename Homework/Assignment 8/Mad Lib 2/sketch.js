@@ -1,21 +1,20 @@
-var lines = []; 
+var gettysburg = []; 
 var lexicon;
 var words = [];
 
 function preload () {
-  lines = loadStrings ('assets/Gettysburg Address.txt');
+  gettysburg = loadStrings ('assets/Gettysburg Address.txt');
 }
 
 function setup() {
   createCanvas(400, 400);
   lexicon = new RiLexicon();
-  textSize (16);
-  text(lines, 0,0,width,height);
+  words = RiTa.tokenize(gettysburg)
 }
 
   function mousePressed() {
 
-counts = RiTa.concordance(lines.join(" ")); 
+counts = RiTa.concordance(gettysburg.join(" ")); 
   
   //replace all nouns with random nouns
   push();
@@ -25,6 +24,7 @@ counts = RiTa.concordance(lines.join(" "));
       if (tags[0] == 'nn') {
         words.push(RiTa.replaceAll = lexicon.randomWord('nn'));
         noLoop();
+        //println(words.length)
           pop();
       }
     }
@@ -38,12 +38,11 @@ counts = RiTa.concordance(lines.join(" "));
       if (tag[0] == 'jj') {
         words.push(RiTa.replaceAll = lexicon.randomWord('jj'));
         noLoop();
+        //println(words.length)
           pop();
       }
     }
   }
-      
-
 }
 function draw() {
   background(50);
