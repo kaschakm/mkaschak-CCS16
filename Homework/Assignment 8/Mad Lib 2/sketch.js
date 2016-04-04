@@ -1,5 +1,5 @@
 var gettysburg = []; 
-var lexicon;
+var rl;
 var words = [];
 
 function preload () {
@@ -8,7 +8,8 @@ function preload () {
 
 function setup() {
   createCanvas(400, 400);
-  lexicon = new RiLexicon();
+  textSize(20);
+  rl = new RiLexicon();
   words = RiTa.tokenize(gettysburg)
 }
 
@@ -22,8 +23,7 @@ counts = RiTa.concordance(gettysburg.join(" "));
     if (counts.hasOwnProperty(k)) {
       var tags = RiTa.getPosTags(k);
       if (tags[0] == 'nn') {
-        words.push(RiTa.replaceAll = lexicon.randomWord('nn'));
-        noLoop();
+        words.push(RiTa.replaceWord = rl.randomWord('nn'));
         //println(words.length)
           pop();
       }
@@ -36,8 +36,7 @@ counts = RiTa.concordance(gettysburg.join(" "));
     if (counts.hasOwnProperty(j)) {
       var tag = RiTa.getPosTags(j);
       if (tag[0] == 'jj') {
-        words.push(RiTa.replaceAll = lexicon.randomWord('jj'));
-        noLoop();
+        words.push(RiTa.replaceWord = rl.randomWord('jj'));
         //println(words.length)
           pop();
       }
@@ -46,7 +45,6 @@ counts = RiTa.concordance(gettysburg.join(" "));
 }
 function draw() {
   background(50);
-  textSize(20);
   fill(255);
   text(words.join(' '), 10, 10, width-20, height-20);
 }

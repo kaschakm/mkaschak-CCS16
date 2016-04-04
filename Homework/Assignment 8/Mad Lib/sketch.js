@@ -1,33 +1,32 @@
-var gettysburg = []; 
-var lexicon;
 var words = [];
-partsOfSpeech = RiTa.getPosTags;
-
-function preload () {
-  gettysburg = loadStrings ('assets/Gettysburg Address.txt');
-}
+var rl;
 
 function setup() {
-  createCanvas(400, 400);
-  lexicon = new RiLexicon();
-  words = RiTa.tokenize(gettysburg)
-}
-
-  function mousePressed() {
-
-//counts = RiTa.concordance(gettysburg.join(" ")); 
+  createCanvas(600, 600);
+  textSize(16);
+  rl = new RiLexicon();
   
-  //replace all nouns with random nouns
-      push();
-      for(var i=0; i < partsOfSpeech == 'nn'; i++){
-       words.push(RiTa.replaceWord(('nn'),lexicon.randomWord('nn')));
-      pop();
-      }
-    }
-
+  //text of the Gettysburg Address
+  words = RiTa.tokenize("Four score and seven years ago our fathers brought forth, on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal. Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this. But, in a larger sense, we can not dedicate—we can not consecrate—we can not hallow—this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us—that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion—that we here highly resolve that these dead shall not have died in vain—that this nation, under God, shall have a new birth of freedom—and that government of the people, by the people, for the people, shall not perish from the earth.");
+  
+  //speed that the words are replaced
+  frameRate (0.5);
+}
+    
 function draw() {
   background(50);
-  textSize(20);
   fill(255);
-  text(words.join, 10, 10, width-20, height-20);
-}
+  
+  //replace all nouns with random nouns
+      for(var i=0; i < words.length; i++){
+        if (rl.isNoun(words[i])){
+          words[i] = rl.randomWord('nn');
+        }
+        
+  //replace all adjectives with random adjectives
+        else if (rl.isAdjective(words[i])){
+          words[i] = rl.randomWord('jj');
+        }
+        }
+          text(words.join(' '), 10, 10, width-20, height-20);
+      }
