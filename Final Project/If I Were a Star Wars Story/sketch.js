@@ -45,7 +45,7 @@ function draw() {
           words[i] = rl.randomWord('jj');
           }  
           }
-    setTimeout(randomizeText, 15000);
+    setTimeout(randomizeText, 10000);
   }
 randomizeText();
 
