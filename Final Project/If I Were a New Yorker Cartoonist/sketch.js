@@ -1,5 +1,4 @@
 var lexicon;
-var slider;
 var button;
 var talk;
 
@@ -7,39 +6,31 @@ function setup() {
   createCanvas (windowWidth,windowHeight);
   lexicon = new RiLexicon();
   
-  //positions slider on top left
-  slider = createSlider(0,255,100);
-  slider.position (10,10);
-  slider.style('width', '80px');
-  
-  //button below slider 
+  //button creates jokes when pressed 
   button = createButton('High Brow Joke Creator');
-  button.position(10, 40);
+  button.position(10, 20);
   button.mousePressed(press);
 }
 
 function draw() {
-  press ();
-  
-  //slider changes the background color
-  var val = slider.value();
-  background (0,0,(val));
-  
+  background (0,0,140);
   cat (width/2, height/2);
   catTwo (width/4, height/2);
   house (width/3, height/3);
+  press ();
 }
 
-//pressing the button will bring up a new joke
+//when pressed the last three words of the joke change
 function press() {
+  noStroke();
+  fill (0,0,140);
+  rect (0, height-15, width, -25);
   push();
-  var talk = "The next time we go to a gala we should" + " " +      lexicon.randomWord("vb") + " " + lexicon.randomWord("jj") + " " + lexicon.randomWord("nn") + ("!");
-  //noLoop();
-  textSize(26);
-  textAlign(CENTER);
+  var talk = "The next time we go to a gala we should" + " " + lexicon.randomWord("vb") + " " + lexicon.randomWord("jj") + " " + lexicon.randomWord("nn") + ("!");
+  noLoop();
+  textSize(20)
   fill(255);
-  text(talk, width/2, height-40);
-  //clear();
+  text(talk, width/15, height-20);
   pop();
 }
 
@@ -56,8 +47,7 @@ function cat (x, y) {
   fill (40);
   triangle (50, 75, 30, 60, 70, 60)//nose
   fill (0);
-  ellipse (48, 100, random (40), random(10)); //mouth
-  frameRate (9);
+  ellipse (48, 100, 30, 20); //mouth
   fill (200,50,100);
   triangle(50, 125, -20, 275, 120, 275); //dress
   pop();
@@ -96,8 +86,8 @@ function house (x,y) {
   rect (80, -20, 30, -20); //left window
   fill (0);
   rect (240, -20, 30, -20); //right window
-  fill (255, 255, 0);
-  ellipse (350, -200, 150, 150); //sun
+  fill (200, 200, 0);
+  ellipse (350, -200, 150, 150); //moon
 }
 
 function windowResized() {

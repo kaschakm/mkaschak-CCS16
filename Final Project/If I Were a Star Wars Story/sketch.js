@@ -30,7 +30,7 @@ function draw() {
   
   //plot text
   fill(250, 210, 10);
-  text(words.join(' '), x, y+100, width, height);
+  text(words.join(' '), x, y+50, width-20, height);
   }
 
   function randomizeText() {
